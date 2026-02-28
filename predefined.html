@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Objects Example</title>
+</head>
+<body>
+
+    <h2>JavaScript Predefined Objects</h2>
+
+    <p id="output"></p>
+
+    <button onclick="showDetails()">Click Me</button>
+
+    <script>
+
+        function showDetails() {
+
+            // 1️⃣ Window Object
+            window.alert("Welcome to JavaScript Objects Demo");
+
+            // 2️⃣ Math Object
+            let randomNumber = Math.random();
+            let squareRoot = Math.sqrt(64);
+
+            // 3️⃣ String Object
+            let text = "Aditya University";
+            let upperText = text.toUpperCase();
+            let lengthText = text.length;
+
+            // 4️⃣ Document Object
+            document.getElementById("output").innerHTML =
+                "Random Number: " + randomNumber + "<br>" +
+                "Square Root of 64: " + squareRoot + "<br><br>" +
+                "Original Text: " + text + "<br>" +
+                "Uppercase: " + upperText + "<br>" +
+                "Length of Text: " + lengthText;
+
+        }
+
+    </script>
+
+</body>
+</html>
