@@ -1,40 +1,43 @@
-// Import http module
-const http = require('http');
+const express = require('express');
+const app = express();
 
-// Create server
-const server = http.createServer((req, res) => {
+const PORT = 3000;
 
-    if (req.method === "GET") {
-        // Sending data to client
-        res.writeHead(200, { 'Content-Type': 'application/json' });
+// Middleware to parse JSON data
+app.use(express.json());
 
-        const data = {
-            name: "Nagaraju",
-            course: "Node.js",
-            message: "Data transferred successfully using HTTP"
-        };
+// Sample in-memory data
+let users = [
+    { id: 1, name: "Nagaraju" },
+    { id: 2, name: "Ravi" }
+];
 
-        res.end(JSON.stringify(data));
-    }
+// 1️⃣ Accept Data (POST)
+app.post('/users', (req, res) => {
+    const newUser = {
+        id: users.length + 1,
+        name: req.body.name
+    };
 
-    else if (req.method === "POST") {
-        let body = "";
-
-        // Receive data from client
-        req.on("data", chunk => {
-            body += chunk.toString();
-        });
-
-        req.on("end", () => {
-            console.log("Received Data:", body);
-
-            res.writeHead(200, { 'Content-Type': 'text/plain' });
-            res.end("Data received successfully");
-        });
-    }
+    users.push(newUser);
+    res.send("User added successfully");
 });
 
-// Run server on port 4000
-server.listen(4000, () => {
-    console.log("Server running at http://localhost:4000");
+// 2️⃣ Retrieve Data (GET)
+app.get('/users', (req, res) => {
+    res.json(users);
+});
+
+// 3️⃣ Delete Specified Resource (DELETE)
+app.delete('/users/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+
+    users = users.filter(user => user.id !== id);
+
+    res.send("User deleted successfully");
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
 });
