@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combinator Selectors</title>
+    <style>
+        /* Descendant Selector */
+        div p {
+            color: blue;
+        }
+
+        /* Child Selector */
+        div > h3 {
+            color: red;
+        }
+
+        /* Adjacent Sibling Selector */
+        h4 + p {
+            background-color: yellow;
+        }
+
+        /* General Sibling Selector */
+        h5 ~ p {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h3>Child Selector Example</h3>
+        <p>Descendant paragraph inside div.</p>
+    </div>
+
+    <h4>Adjacent Sibling Example</h4>
+    <p>This paragraph is adjacent sibling.</p>
+
+    <h5>General Sibling Example</h5>
+    <p>General sibling paragraph 1.</p>
+    <p>General sibling paragraph 2.</p>
+
+</body>
+</html>
