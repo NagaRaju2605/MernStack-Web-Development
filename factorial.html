@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factorial Program</title>
+</head>
+<body>
+
+<h2>Factorial of a Number</h2>
+
+<input type="number" id="num" placeholder="Enter a number">
+<button onclick="findFactorial()">Find Factorial</button>
+
+<p id="result"></p>
+
+<script>
+function findFactorial() {
+    let n = document.getElementById("num").value;
+    let fact = 1;
+
+    if (n < 0) {
+        document.getElementById("result").innerHTML = "Factorial not possible";
+        return;
+    }
+
+    for (let i = 1; i <= n; i++) {
+        fact *= i;
+    }
+
+    document.getElementById("result").innerHTML = "Factorial = " + fact;
+}
+</script>
+
+</body>
+</html>
